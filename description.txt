@@ -1,0 +1,18 @@
+Creativity Code Website
+Description: Creativity Code Website is a professional web application developed to showcase the services and portfolio of a programming and tech solutions company. The website provides a modern and user-friendly interface for potential clients to explore the company's offerings, including a contact page for inquiries and a portfolio displaying past projects. It also includes a responsive design that works seamlessly across different devices and integrates with popular social media platforms like WhatsApp, LinkedIn, GitHub, Facebook, and Instagram.
+
+Features:
+
+Homepage: Introduction to the company and its services with clear call-to-action buttons.
+Portfolio Page: A visually appealing layout to display completed projects, with images, descriptions, and links to the live projects.
+Contact Us Page: Allows users to easily get in touch with the company through integrated social media buttons (WhatsApp, LinkedIn, GitHub, Facebook, Instagram).
+Responsive Design: Ensures a seamless experience across mobile and desktop devices.
+Interactive Features: Integration of a simple, clean, and functional UI for easy navigation.
+Social Media Integration: Direct links to social media profiles for enhanced customer engagement.
+YouTube Integration: A section to promote the company's courses via YouTube links.
+Technologies Used:
+
+Frontend: HTML, CSS, JavaScript, Bootstrap
+Backend: Django (Python Framework)
+Database: SQLite (or any other relational database)
+Version Control: Git & GitHub

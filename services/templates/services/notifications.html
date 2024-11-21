@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(133, 12, 117);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+            color: rgb(133, 12, 117);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li p {
+            margin: 5px 0;
+        }
+
+        strong {
+            color: rgb(133, 12, 117);
+        }
+
+        button {
+            background-color: rgb(133, 12, 117);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #9a0d8f;
+        }
+
+        span {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notifications</h1>
+    <p>Unread Notifications Count: {{ notifications_count }}</p>
+    <ul>
+        {% for notification in notifications %}
+            <li>
+                <p><strong>Message:</strong> {{ notification.message }}</p>
+                <p><strong>Date:</strong> {{ notification.created_at|date:"Y-m-d H:i" }}</p>
+                {% if not notification.is_read %}
+                    <form action="{% url 'mark_notification_read' notification.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Mark as Read</button>
+                    </form>
+                {% else %}
+                    <span>Read</span>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No new notifications.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

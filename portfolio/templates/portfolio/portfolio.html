@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="background-color:rgb(133, 12, 117) ;color: #fff;">Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(133, 12, 117);
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 200px; /* تحديد الارتفاع المناسب للصورة */
+            overflow: auto; /* يظهر شريط التمرير عند الحاجة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-img-top {
+            max-width: 300px;
+            height: 100%;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: rgb(133, 12, 117);
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .card-footer {
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            background-color: rgb(133, 12, 117);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #9a0d8f;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .col-md-4 {
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .col-md-4 {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" style="background-color:rgb(133, 12, 117) ; color: #fff;">Portfolio</h1>
+        <div class="row">
+            {% for item in portfolio_items %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-img-container">
+                        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                        <p><strong>Client:</strong> {{ item.client_name }}</p>
+                        <p><strong>Developer:</strong> {{ item.developer_name }}</p>
+                        <a href="{{ item.link }}" class="btn" target="_blank">View Project</a>
+                    </div>
+                    {% if item.video %}
+                    <div class="card-footer">
+                        <video controls style="width: 100%;">
+                            <source src="{{ item.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
